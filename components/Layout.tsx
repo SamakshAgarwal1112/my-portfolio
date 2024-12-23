@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { SideSecondPanel } from "./SideSecondPanel";
-import Clock from "react-live-clock";
+import { SideSecondPanel } from "./SideSecondPanel"
 import { SideMainPanel } from "./SideMainPanel";
 import { useMediaQuery } from "react-responsive";
 import Nav from "./Navbar";
+import { ReactNode } from "react";
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 943px)" });
   const [openSideMenu, setOpenSideMenu] = useState(false);
+  const DateTime = new Date().toLocaleString();
 
   useEffect(() => {
     if (isTabletOrMobile) {
@@ -18,6 +19,11 @@ const Layout = ({ children }) => {
   const toggleSideMainMenu = () => {
     setOpenSideMenu(!openSideMenu);
   };
+
+  setInterval(() => {
+    window.location.reload();
+  }
+  , 10000);
 
   return (
     <>
@@ -59,10 +65,7 @@ const Layout = ({ children }) => {
           <ul className="left">
             <li>
               {
-                <Clock
-                  format={"dddd, MMMM Mo, YYYY, h:mm:ss A"}
-                  ticking={true}
-                />
+                DateTime
               }
             </li>
             <li>UTF-8</li>

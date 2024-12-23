@@ -64,16 +64,16 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
   };
 
   const renderSection = (section: string, links: typeof sections[keyof typeof sections]) => (
-    <div className="menu-drop pt-1">
-      <div className="box-click">
+    <div className="pt-1">
+      <div>
         <div
           className="flex pl-1 cursor-pointer"
           onClick={() => togglePanel(`${section}Close` as keyof typeof panelState)}
         >
-          <div className="myweight flex-min topPadd">
+          <div className="font-medium flex-min pt-1">
             {panelState[`${section}Close` as keyof typeof panelState] ? <RightIcon /> : <DownIcon />}
           </div>
-          <span className="myweight flex-auto">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+          <span className="text-gray-300 text-xs mx-1.5 z-[99] relative font-medium flex-auto">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
         </div>
         {!panelState[`${section}Close` as keyof typeof panelState] && (
           <ul>
@@ -81,7 +81,7 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
               <li
                 key={link.name}
                 onClick={() => navigateTo(link.path, link.name)}
-                className={`smallSide ${activeCurrentSubLink === link.name ? "active" : ""}`}
+                className={`h-[27px] ${activeCurrentSubLink === link.name ? "text-white" : ""}`}
               >
                 <SidePanelSubLink name={link.name} link={link.path} icon={<span className={link.icon}></span>} />
               </li>
