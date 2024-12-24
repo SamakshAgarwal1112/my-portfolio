@@ -14,8 +14,8 @@ export const VSCodeLogo = () => {
     <Image
         src="/vscode.png"
         alt="Visual Studio Code Icon"
-        width={20}
-        height={20}
+        width={16}
+        height={16}
         priority
     />
   );
@@ -24,8 +24,8 @@ export const VSCodeLogo = () => {
 export default function Nav() {
 
   return (
-    <Navbar isBordered>
-      <NavbarContent className="flex justify-center align-middle ml-[15px] gap-4" justify="center">
+    <Navbar isBordered className="flex justify-start h-[25px] relative z-100">
+      <NavbarContent className="flex justify-center align-middle gap-4 h-[25px]" justify="center">
         <NavbarBrand>
           <VSCodeLogo />
         </NavbarBrand>

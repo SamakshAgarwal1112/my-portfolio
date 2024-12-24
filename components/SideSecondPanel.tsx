@@ -1,8 +1,9 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import { DownIcon, RightIcon } from "./SVG/Icons";
 import SidePanelSubLink from "./SidePanelSubLink";
 import { useMediaQuery } from "react-responsive";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 
 interface IProps {
   closeSideMenu: () => void;
@@ -18,6 +19,7 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 943px)" });
   const router = useRouter();
+  const pathname = usePathname();
   const [activeCurrentSubLink, setActiveCurrentSubLink] = useState("");
 
   const sections = {
@@ -46,9 +48,9 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
   };
 
   useEffect(() => {
-    const currentSubLink = window.location.pathname.split("/").pop() || "index.html";
+    const currentSubLink = pathname.split("/").pop() || "index.html";
     setActiveCurrentSubLink(currentSubLink);
-  }, [router.pathname]);
+  }, [pathname]);
 
   const togglePanel = (panel: keyof typeof panelState) => {
     setPanelState((prevState) => ({
@@ -81,7 +83,7 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
               <li
                 key={link.name}
                 onClick={() => navigateTo(link.path, link.name)}
-                className={`h-[27px] ${activeCurrentSubLink === link.name ? "text-white" : ""}`}
+                className={`h-[27px] text-[12px] p-[5px] cursor-pointer relative ${activeCurrentSubLink === link.name ? "text-white" : ""}`}
               >
                 <SidePanelSubLink name={link.name} link={link.path} icon={<span className={link.icon}></span>} />
               </li>
@@ -93,9 +95,9 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
   );
 
   return (
-    <div className="menu-option overflow-hidden">
-      <h5 className="myweight">EXPLORER</h5>
-      <div className="menu-content mb-5 pb-5 z-1 scrollbar" style={{ height: "84%", overflowY: "scroll" }}>
+    <div className="bg-[#252526] absolute top-[25px] left-[47px] w-[256px] h-[calc(100vh-50px)] overflow-x-hidden pl-[10px]">
+      <h5 className="text-medium">EXPLORER</h5>
+      <div className="mb-5 pb-5 z-1 scrollbar" style={{ height: "84%", overflowY: "scroll" }}>
         {renderSection("about", sections.about)}
         {renderSection("projects", sections.projects)}
         {renderSection("contact", sections.contact)}

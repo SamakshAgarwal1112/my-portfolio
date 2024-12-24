@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AvatarIcon, Copyicon } from "./SVG/Icons";
-import styles from "../Layout.module.css";
 
 interface ISideMainPanel {
   mainActiveSideButton: boolean;
@@ -22,6 +21,7 @@ export const SideMainPanel: React.FC<ISideMainPanel> = (props) => {
           } text-center align-middle pl-[0.65rem] pr-0 cursor-pointer`}
           title="Sidebar"
           onClick={() => {
+            console.log("Clicked sidebar");
             props.toggleSideMainMenu();
             setselectedSideTab("main");
           }}
@@ -31,7 +31,7 @@ export const SideMainPanel: React.FC<ISideMainPanel> = (props) => {
 
         <Link href="/">
           <li
-            className={`${styles.faicons}  `}
+            className={`text-center align-middle pl-[0.65rem] pr-0 cursor-pointer`}
             style={{ position: "absolute", bottom: "0" }}
             title="About"
           >

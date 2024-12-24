@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import { SideSecondPanel } from "./SideSecondPanel"
 import { SideMainPanel } from "./SideMainPanel";
@@ -8,30 +9,29 @@ import { ReactNode } from "react";
 const Layout = ({ children }: { children: ReactNode }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 943px)" });
   const [openSideMenu, setOpenSideMenu] = useState(false);
-  const DateTime = new Date().toLocaleString();
+  // const DateTime = new Date().toLocaleString();
 
   useEffect(() => {
     if (isTabletOrMobile) {
+      console.log("Resetting side menu state");
       setOpenSideMenu(false);
     }
   }, [isTabletOrMobile]);
 
+  useEffect(() => {
+    console.log("Side menu state:", openSideMenu);
+  }, [openSideMenu]);
+
   const toggleSideMainMenu = () => {
-    setOpenSideMenu(!openSideMenu);
+    console.log("toggleSideMainMenu");
+    setOpenSideMenu((prev) => !prev);
   };
-
-  setInterval(() => {
-    window.location.reload();
-  }
-  , 10000);
-
   return (
     <>
-      <div className="bg-[#3c3c3c] p-[2px] flex align-middle relative h-[25px] w-full">
+      <div className="bg-[#3c3c3c] flex justify-start align-middle relative h-[25px] w-full">
         <Nav/>
       </div>
-      <div className="scrollbar w-full">
-        <div
+      <div
           className={`${
             openSideMenu ? "w-[320px] h-full inline-flex overflow-x-hidden" : "w-[47px] h-full inline-flex overflow-x-hidden"
           }`}
@@ -46,12 +46,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
         <main
           className={`${
-            openSideMenu ? "w-[calc(100vw-320px)] h-screen mt-2 -ml-2 inline-flex justify-center" : "w-[calc(100vw-57px)] h-screen overflow-x-hidden justify-center mt-2 -ml-2 left-[60px] absolute inline-flex"
-          } scrollbar`}
+            openSideMenu ? "w-[calc(100vw-320px)]overflow-x-hidden h-screen mt-2 -ml-2 inline-flex justify-center" : "w-[calc(100vw-57px)] h-screen overflow-x-hidden justify-center mt-2 -ml-2 left-[60px] absolute inline-flex"
+          }`}
         >
           {children}
         </main>
-      </div>
 
       {!isTabletOrMobile ? (
         <div className="absolute bottom-0 left-0 w-full h-5 bg-[#007acc] pb-6 z-50">
@@ -65,7 +64,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <ul className="left">
             <li>
               {
-                DateTime
+                // DateTime
               }
             </li>
             <li>UTF-8</li>
