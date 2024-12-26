@@ -21,7 +21,6 @@ export const SideMainPanel: React.FC<ISideMainPanel> = (props) => {
           } text-center align-middle pl-[0.65rem] pr-0 cursor-pointer`}
           title="Sidebar"
           onClick={() => {
-            console.log("Clicked sidebar");
             props.toggleSideMainMenu();
             setselectedSideTab("main");
           }}

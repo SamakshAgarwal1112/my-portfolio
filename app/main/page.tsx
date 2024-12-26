@@ -3,7 +3,7 @@ import NavbarComponent from "@/components/Navbar";
 const Main = () => {
     return (
         <>
-            <NavbarComponent/>
+            {/* <NavbarComponent/> */}
         </>
     );
 }

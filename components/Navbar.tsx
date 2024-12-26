@@ -24,7 +24,7 @@ export const VSCodeLogo = () => {
 export default function Nav() {
 
   return (
-    <Navbar isBordered className="flex justify-start h-[25px] relative z-100">
+    <Navbar className="flex justify-start h-[25px] px-0">
       <NavbarContent className="flex justify-center align-middle gap-4 h-[25px]" justify="center">
         <NavbarBrand>
           <VSCodeLogo />

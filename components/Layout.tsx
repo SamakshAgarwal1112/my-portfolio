@@ -13,17 +13,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (isTabletOrMobile) {
-      console.log("Resetting side menu state");
       setOpenSideMenu(false);
     }
   }, [isTabletOrMobile]);
 
-  useEffect(() => {
-    console.log("Side menu state:", openSideMenu);
-  }, [openSideMenu]);
-
   const toggleSideMainMenu = () => {
-    console.log("toggleSideMainMenu");
     setOpenSideMenu((prev) => !prev);
   };
   return (
@@ -34,7 +28,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <div
           className={`${
             openSideMenu ? "w-[320px] h-full inline-flex overflow-x-hidden" : "w-[47px] h-full inline-flex overflow-x-hidden"
-          }`}
+          } relative z-100`}
         >
           <SideMainPanel
             toggleSideMainMenu={toggleSideMainMenu}
@@ -53,15 +47,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </main>
 
       {!isTabletOrMobile ? (
-        <div className="absolute bottom-0 left-0 w-full h-5 bg-[#007acc] pb-6 z-50">
-          <ul className="right pt-1 " style={{ fontSize: "12px" }}>
+        <div className="flex justify-between absolute bottom-0 left-0 w-full h-5 bg-[#007acc] pb-6 z-50 text-[12px] px-2">
+          <ul className="right pt-1 flex gap-2">
             <li>Made in</li>
             <li>Next.Js</li>
             <li>TypeScript</li>
             <li>NextUI</li>
             <li>Tailwind</li>
           </ul>
-          <ul className="left">
+          <ul className="left pt-1 flex gap-2">
             <li>
               {
                 // DateTime
