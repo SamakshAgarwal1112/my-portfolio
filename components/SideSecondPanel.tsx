@@ -66,7 +66,7 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
   };
 
   const renderSection = (section: string, links: typeof sections[keyof typeof sections]) => (
-    <div className="pt-1">
+    <div className="pt-2">
       <div>
         <div
           className="flex pl-1 cursor-pointer"
@@ -95,9 +95,9 @@ export const SideSecondPanel: React.FC<IProps> = ({ closeSideMenu }) => {
   );
 
   return (
-    <div className="bg-[#252526] absolute top-[25px] left-[47px] w-[256px] h-[calc(100vh-50px)] overflow-x-hidden pl-[10px]">
-      <h5 className="text-medium">EXPLORER</h5>
-      <div className="mb-5 pb-5 z-1 scrollbar" style={{ height: "84%", overflowY: "scroll" }}>
+    <div className="bg-[#252526] absolute left-[47px] w-[256px] h-[calc(100vh-25px)] overflow-x-hidden py-2 pl-[10px]">
+      <h5 className="text-small font-semibold">EXPLORER</h5>
+      <div className="mb-5 pb-5 z-1 scrollbar-hide py-2" style={{ height: "84%", overflowY: "scroll" }}>
         {renderSection("about", sections.about)}
         {renderSection("projects", sections.projects)}
         {renderSection("contact", sections.contact)}

@@ -27,7 +27,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </div>
       <div
           className={`${
-            openSideMenu ? "w-[320px] h-full inline-flex overflow-x-hidden" : "w-[47px] h-full inline-flex overflow-x-hidden"
+            openSideMenu ? "w-[320px] h-full inline-flex overflow-hidden" : "w-[47px] h-full inline-flex overflow-hidden"
           } relative z-100`}
         >
           <SideMainPanel
@@ -37,11 +37,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
           {openSideMenu && (
             <SideSecondPanel closeSideMenu={() => setOpenSideMenu(false)} />
           )}
-        </div>
+      </div>
         <main
-          className={`${
-            openSideMenu ? "w-[calc(100vw-320px)]overflow-x-hidden h-screen mt-2 -ml-2 inline-flex justify-center" : "w-[calc(100vw-57px)] h-screen overflow-x-hidden justify-center mt-2 -ml-2 left-[60px] absolute inline-flex"
-          }`}
+          className={`w-[100vw] h-screen overflow-x-hidden justify-center mt-2 left-[5%] absolute inline-flex`}
         >
           {children}
         </main>
