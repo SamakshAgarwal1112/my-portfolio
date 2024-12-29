@@ -5,17 +5,31 @@ import { SideMainPanel } from "./SideMainPanel";
 import { useMediaQuery } from "react-responsive";
 import Nav from "./Navbar";
 import { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 943px)" });
   const [openSideMenu, setOpenSideMenu] = useState(false);
-  // const DateTime = new Date().toLocaleString();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isTabletOrMobile) {
       setOpenSideMenu(false);
     }
   }, [isTabletOrMobile]);
+
+  useEffect(() => {
+    if (pathname && pathname !== "/") {
+      let recentLinks: any = localStorage.getItem("history");
+      recentLinks = recentLinks ? JSON.parse(recentLinks) : [];
+      recentLinks = recentLinks.slice(0, 4);
+      recentLinks = recentLinks.filter(
+        (link: string) => link !== pathname
+      );
+      recentLinks.unshift(pathname);
+      localStorage.setItem("history", JSON.stringify(recentLinks));
+    }
+  }, [pathname]);
 
   const toggleSideMainMenu = () => {
     setOpenSideMenu((prev) => !prev);
@@ -39,7 +53,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
           )}
       </div>
         <main
-          className={`w-[100vw] h-screen overflow-x-hidden justify-center mt-2 left-[5%] absolute inline-flex`}
+          className={`w-[100vw] h-screen overflow-x-hidden justify-center mt-2 ${openSideMenu ? "left-[10%]" : "left-[5%]"} right-0 absolute inline-flex z-0`}
         >
           {children}
         </main>
@@ -54,11 +68,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
             <li>Tailwind</li>
           </ul>
           <ul className="left pt-1 flex gap-2">
-            <li>
-              {
-                // DateTime
-              }
-            </li>
             <li>UTF-8</li>
             <li>
               Port: 443

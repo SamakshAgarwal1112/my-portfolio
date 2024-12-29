@@ -24,8 +24,8 @@ export const VSCodeLogo = () => {
 export default function Nav() {
 
   return (
-    <Navbar height={'25px'} className="flex justify-start h-[25px] px-0">
-      <NavbarContent className="flex justify-center align-middle gap-4 h-[25px] px-2" justify="center">
+    <Navbar height={'25px'} className="flex justify-start h-[25px] ml-[-10px] relative">
+      <NavbarContent className="flex justify-center align-middle gap-4 h-[25px]" justify="center">
         <NavbarBrand>
           <VSCodeLogo />
         </NavbarBrand>

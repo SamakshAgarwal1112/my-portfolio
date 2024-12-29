@@ -11,7 +11,7 @@ export const SideMainPanel: React.FC<ISideMainPanel> = (props) => {
   const [selectedSideTab, setselectedSideTab] = useState("main");
 
   return (
-    <div className="bg-[#333] absolute py-2 left-0 w-[47px] h-[calc(100%-40px)] text-center">
+    <div className="bg-[#333] absolute py-3 left-0 w-[47px] h-[calc(100%-40px)] text-center">
       <ul className="text-center relative h-full">
         <li
           className={`${
